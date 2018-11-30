@@ -19,6 +19,8 @@ function getAllMessages() {
 }
 
 function create(message) {
+  if (!message.username) message.username = "Anonymous";
+
   const result = Joi.validate(message, schema);
   if (result.err == null) {
     message.created = new Date();
